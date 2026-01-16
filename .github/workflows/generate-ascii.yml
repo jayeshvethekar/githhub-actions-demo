@@ -1,0 +1,21 @@
+name: Generate Ascii Demo
+
+on:
+    push
+jobs:
+    another-job:
+        runs-on: ubuntu-latest
+        steps:
+             - name: checkout the repo
+               uses: actions/checkout@v6
+             - name: install cowsay
+               run: sudo apt-get install cowsay -t
+             - name: generate ascii
+               run: cowsay -f dragon "I am the Dragon of the Terminal!" > dragon_talk.txt
+             - name: check file exist
+               run: grep -i dragon_talk.txt
+             - name: read file
+               run: cat dragon_talk.txt
+             - name: list files
+               run: ls -ltra
+            
