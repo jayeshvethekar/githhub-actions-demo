@@ -8,14 +8,9 @@ jobs:
         steps:
              - name: checkout the repo
                uses: actions/checkout@v6
-             - name: install cowsay
-               run: sudo apt-get install cowsay -y
-             - name: generate ascii
-               run: cowsay -f dragon "I am the Dragon of the Terminal!" > dragon_talk.txt
-             - name: check file exist
-               run: grep -i "Dragon" dragon_talk.txt
-             - name: read file
-               run: cat dragon_talk.txt
-             - name: list files
-               run: ls -ltra
+             - name: execute shell file
+               run: |
+                chmod +x ./ascii-generate.sh
+                ./ascii-generate.sh
+               
             
