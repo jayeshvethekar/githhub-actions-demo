@@ -7,9 +7,8 @@ jobs:
         steps:
         - name: checkout the repo
           uses: actions/checkout@v6
-        - name: welcome message
-          run: echo "hello to the first githbub workflow"
-        - name: list files
-          run: ls
-        - name: read the contents of the file
-          run: cat readme.md
+        - name: setup 
+          run: |
+            echo "hello to the first githbub workflow"
+            ls
+            cat readme.md
