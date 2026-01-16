@@ -5,6 +5,8 @@ jobs:
     First-job:
         runs-on: ubuntu-latest
         steps:
+        - name: checkout the repo
+          uses: actions/checkout@v6
         - name: welcome message
           run: echo "hello to the first githbub workflow"
         - name: list files
