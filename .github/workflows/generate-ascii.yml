@@ -13,7 +13,7 @@ jobs:
              - name: generate ascii
                run: cowsay -f dragon "I am the Dragon of the Terminal!" > dragon_talk.txt
              - name: check file exist
-               run: grep -i dragon_talk.txt
+               run: grep -i "Dragon" dragon_talk.txt
              - name: read file
                run: cat dragon_talk.txt
              - name: list files
