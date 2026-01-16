@@ -9,7 +9,7 @@ jobs:
              - name: checkout the repo
                uses: actions/checkout@v6
              - name: install cowsay
-               run: sudo apt-get install cowsay -t
+               run: sudo apt-get install cowsay -y
              - name: generate ascii
                run: cowsay -f dragon "I am the Dragon of the Terminal!" > dragon_talk.txt
              - name: check file exist
