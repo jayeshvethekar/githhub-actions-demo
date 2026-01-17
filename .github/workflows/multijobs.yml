@@ -31,7 +31,7 @@ jobs:
         - name: download the artifats
           uses: actions/download-artifact@v5
           with:
-            name: dragon_talk_file\
+            name: dragon_talk_file
         - name: cat file
           run: cat dragon_talk.txt
         - name: deploy 
