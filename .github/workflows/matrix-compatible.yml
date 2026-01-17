@@ -1,0 +1,15 @@
+name: matrix demo
+on:
+    workflow_dispatch
+jobs:
+    deploy:
+        strategy:
+            matrix:
+                os: ["ubuntu-latest","ubuntu-slim","windows-latest"]
+                images: ["hello-world","nginx"]
+        runs-on: ${{ matrix.os }}
+        steps:
+        - name: run the image with ${{ matrix.os }}
+          run: docker info
+        - name: run image
+          run: docker run ${{ matrix.images }}
