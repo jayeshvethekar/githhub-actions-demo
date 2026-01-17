@@ -1,0 +1,38 @@
+name: multiple job workflow
+on:
+    push
+jobs:
+    firstjob:
+        runs-on: ubuntu-latest
+        steps:
+        - name: install cowsay
+          run: sudo apt-get install cowsay -y
+        - name: create the file
+          run: cowsay -f dragon "I am the Dragon of the Terminal!" > dragon_talk.txt
+        - name: upload the artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: dragon_talk_file
+            path: dragon_talk.txt
+    testjob:
+        runs-on: ubuntu-latest
+        needs: firstjob
+        steps:
+        - name: download the artifats
+          uses: actions/download-artifact@v5
+          with:
+            name: dragon_talk_file
+        - name: test file
+          run: grep -i "Dragon" dragon_talk.txt
+    deployjob:
+        runs-on: ubuntu-latest
+        needs: [firstjob,testjob]
+        steps:
+        - name: download the artifats
+          uses: actions/download-artifact@v5
+          with:
+            name: dragon_talk_file\
+        - name: cat file
+          run: cat dragon_talk.txt
+        - name: deploy 
+          run: echo "Deploying"
