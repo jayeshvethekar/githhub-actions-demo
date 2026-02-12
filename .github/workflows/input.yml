@@ -1,0 +1,44 @@
+name: workflow dispatch input
+on:
+    workflow_dispatch:
+        inputs:
+            run-tests:
+                description: "Run tests?"
+                type: boolean
+                default: true
+                required: true
+            test-type:
+                description: "Types of tests"
+                type: choice
+                options:
+                    - unit
+                    - integration
+                    - all
+                required: true
+            enviroment:
+                description: "choose env"
+                type: environment
+            build_number:
+                description: "build number"
+                type: number
+                required: false
+            meassage:
+                description: "Additional message"
+                type: string
+                required: false
+jobs:
+    build-and-deploy:
+      runs-on: "ubuntu-latest"
+      steps:
+        - name: Print workflow inputs
+          run: |
+            echo "Run Tests:${{ inputs.run-tests}}"
+            echo "Type of Tests:${{ inputs.run-tests}}"
+            echo "Env:${{ inputs.enviroment}}"
+            echo "build number:${{ inputs.build_number}}"
+            echo "message:${{ inputs.meassage}}"
+        - name: test
+          if: ${{inputs.run-tests == 'true'}}
+          run: echo "test"
+
+                
