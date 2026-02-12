@@ -33,7 +33,7 @@ jobs:
         - name: Print workflow inputs
           run: |
             echo "Run Tests:${{ inputs.run-tests}}"
-            echo "Type of Tests:${{ inputs.run-tests}}"
+            echo "Type of Tests:${{ inputs.test-type}}"
             echo "Env:${{ inputs.enviroment}}"
             echo "build number:${{ inputs.build_number}}"
             echo "message:${{ inputs.meassage}}"
